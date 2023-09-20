@@ -31,7 +31,7 @@ namespace KometSales.Application.Users.Commands
                     throw new ArgumentNullException("Username and password are required");
                 }
 
-                var user = await _context.Users.Include(u => u.UserRol).FirstOrDefaultAsync(u => u.UserName.ToLower() == command.UserName.ToLower());
+                var user = await _context.Users.Include(u => u.UserRol).FirstOrDefaultAsync(u => u.UserName.ToLower() == command.UserName.ToLower() && u.Active);
 
                 if (user == null) { return (false, string.Empty); }
 

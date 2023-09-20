@@ -12,10 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="MediatR" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KometSales.Common.Entities\KometSales.Common.Entities.csproj" />
     <ProjectReference Include="..\KometSales.Ifrastructure\KometSales.Ifrastructure.csproj" />
   </ItemGroup>
 

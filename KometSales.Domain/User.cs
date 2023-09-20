@@ -7,5 +7,6 @@
         public string Password { get; set; }
         public Guid RoleId { get; set; }
         public UserRol UserRol { get; set; }
+        public bool Active { get; set; }
     }
 }

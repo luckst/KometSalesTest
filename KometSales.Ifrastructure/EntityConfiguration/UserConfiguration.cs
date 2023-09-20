@@ -24,6 +24,10 @@ namespace KometSales.Ifrastructure.EntityConfiguration
                 .IsRequired(true)
                 .HasMaxLength(255);
 
+            builder.Property(c => c.Active)
+                .IsRequired(true)
+                .HasDefaultValue(true);
+
             builder
                 .HasOne(u => u.UserRol)
                 .WithMany(u => u.Users)

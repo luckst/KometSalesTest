@@ -16,6 +16,7 @@ CREATE TABLE Users (
     UserName NVARCHAR(255) NOT NULL,
     Email NVARCHAR(255) NOT NULL,
     Password NVARCHAR(255) NOT NULL,
+    Active BIT NOT NULL DEFAULT(1),
     RoleId uniqueidentifier,
     CONSTRAINT FK_User_Role FOREIGN KEY (RoleId) REFERENCES UserRoles(Id)
 );

@@ -50,6 +50,8 @@ builder.Services.AddSwaggerGen(c =>
                 Array.Empty<string>()
             }
         });
+
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 });
 
 // Register MediatR and scan the assembly containing your handlers
