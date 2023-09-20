@@ -6,5 +6,6 @@
         public Guid CustomerId { get; set; }
         public Customer Customer { get; set; }
         public decimal TotalAmount { get; set; }
+        public ICollection<SaleDetail> SaleDetails { get; set; }
     }
 }
