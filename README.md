@@ -40,4 +40,6 @@ To run this project, you'll need the following software:
 ## Project structure
 ![image](https://github.com/luckst/KometSalesTest/assets/7145408/3ecfb423-4833-4f6e-b333-298357cacf4f)
 
+## JWT Auth added
+![image](https://github.com/luckst/KometSalesTest/assets/7145408/1ffb40d6-d962-47a5-958d-a8fbaba103f1)
 
