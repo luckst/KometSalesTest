@@ -43,3 +43,6 @@ To run this project, you'll need the following software:
 ## JWT Auth added
 ![image](https://github.com/luckst/KometSalesTest/assets/7145408/1ffb40d6-d962-47a5-958d-a8fbaba103f1)
 
+## User CRUD
+![image](https://github.com/luckst/KometSalesTest/assets/7145408/30fd5ac7-acb9-4f5e-8011-8b467ccc941b)
+
