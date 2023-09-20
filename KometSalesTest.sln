@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Client", "1.Client", "{A06F109B-3F16-492C-9093-84982044943E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Backend", "2.Backend", "{0E5E0462-A895-46C3-9FB1-72A1C199FABD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.DB", "4.DB", "{35466285-D66D-4133-A04F-1EDE8E0C06EC}"
+	ProjectSection(SolutionItems) = preProject
+		DB_Creation.sql = DB_Creation.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{FE9914D6-7492-43CD-90EA-CCD294C1BF2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{8041073F-4F57-4706-B7A2-2C5E36411EB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F8AE8310-7105-489D-948D-F31F01775B3A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Common", "3.Common", "{350F4441-B52E-48B8-9ABD-B4D7BD3EC109}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KometSales.Common.Entities", "KometSales.Common.Entities\KometSales.Common.Entities.csproj", "{63D10B01-8517-45F1-A36A-9D2997B991AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63D10B01-8517-45F1-A36A-9D2997B991AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63D10B01-8517-45F1-A36A-9D2997B991AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63D10B01-8517-45F1-A36A-9D2997B991AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63D10B01-8517-45F1-A36A-9D2997B991AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE9914D6-7492-43CD-90EA-CCD294C1BF2D} = {0E5E0462-A895-46C3-9FB1-72A1C199FABD}
+		{8041073F-4F57-4706-B7A2-2C5E36411EB1} = {0E5E0462-A895-46C3-9FB1-72A1C199FABD}
+		{F8AE8310-7105-489D-948D-F31F01775B3A} = {0E5E0462-A895-46C3-9FB1-72A1C199FABD}
+		{63D10B01-8517-45F1-A36A-9D2997B991AD} = {350F4441-B52E-48B8-9ABD-B4D7BD3EC109}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16FDB62D-5D1D-402E-8E2E-D06D47008C6C}
+	EndGlobalSection
+EndGlobal
