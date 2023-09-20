@@ -35,4 +35,9 @@ To run this project, you'll need the following software:
 
 **Note**: You can find an SQL file named `DB_Creation.sql` in the project directory. This file contains the SQL commands to create the initial tables and data. Please run this script to set up the database.
 
+# Development process
+
+## Project structure
+![image](https://github.com/luckst/KometSalesTest/assets/7145408/3ecfb423-4833-4f6e-b333-298357cacf4f)
+
 
