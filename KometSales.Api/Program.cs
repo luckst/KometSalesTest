@@ -1,3 +1,4 @@
+using KometSales.Api.Controllers;
 using KometSales.Api.Services;
 using KometSales.Application.Users.Commands;
 using KometSales.Common.Entities.Settings;
@@ -50,8 +51,6 @@ builder.Services.AddSwaggerGen(c =>
                 Array.Empty<string>()
             }
         });
-
-    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 });
 
 // Register MediatR and scan the assembly containing your handlers

@@ -1,15 +1,14 @@
 ﻿using KometSales.Common.Entities.Models;
-using KometSales.Domain;
 using KometSales.Ifrastructure;
 using MediatR;
 
-namespace KometSales.Application.Users.Commands
+namespace KometSales.Application.Products.Commands
 {
-    public class UpdateUserCommandHandler
+    public class UpdateProductCommandHandler
     {
-        public class Command : UpdateUserModel, IRequest<Unit>
+        public class Command : UpdateProductModel, IRequest<Unit>
         {
-            public Guid UserId { get; set; }
+            public Guid ProductId { get; set; }
         }
 
         public class Handler : IRequestHandler<Command, Unit>
@@ -26,18 +25,19 @@ namespace KometSales.Application.Users.Commands
                 CancellationToken cancellationToken
             )
             {
-                var user = await _context.Users.FindAsync(command.UserId);
+                var product = await _context.Products.FindAsync(command.ProductId);
 
-                if (user == null)
+                if (product == null)
                 {
-                    throw new NullReferenceException("User not found");
+                    throw new NullReferenceException("Product not found");
                 }
 
-                user.UserName = command.UserName;
-                user.RoleId = command.RoleId;
-                user.Email = command.Email;
+                product.ProductName = command.ProductName;
+                product.Price = command.Price;
+                product.Quantity = command.Quantity;
+                product.Description = command.Description;
 
-                _context.Users.Update(user);
+                _context.Products.Update(product);
                 await _context.SaveChangesAsync();
 
                 return new Unit();

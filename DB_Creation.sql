@@ -29,6 +29,7 @@ CREATE TABLE Customers (
     LastName NVARCHAR(50) NOT NULL,
     Email NVARCHAR(255),
     Phone NVARCHAR(20),
+    Active BIT NOT NULL DEFAULT(1),
     Address NVARCHAR(255)
 );
 GO
@@ -39,6 +40,7 @@ CREATE TABLE Products (
     ProductName NVARCHAR(255) NOT NULL,
     Description NVARCHAR(MAX),
     Price DECIMAL(10, 2) NOT NULL,
+    Active BIT NOT NULL DEFAULT(1),
     Quantity INT NOT NULL DEFAULT(0)
 );
 GO

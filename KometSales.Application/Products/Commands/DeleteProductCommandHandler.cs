@@ -1,13 +1,13 @@
 ﻿using KometSales.Ifrastructure;
 using MediatR;
 
-namespace KometSales.Application.Users.Commands
+namespace KometSales.Application.Products.Commands
 {
-    public class DeleteUserCommandHandler
+    public class DeleteProductCommandHandler
     {
         public class Command : IRequest<Unit>
         {
-            public Guid UserId { get; set; }
+            public Guid ProductId { get; set; }
         }
 
         public class Handler : IRequestHandler<Command, Unit>
@@ -24,10 +24,10 @@ namespace KometSales.Application.Users.Commands
                 CancellationToken cancellationToken
             )
             {
-                var user = await _context.Users.FindAsync(command.UserId);
-                user.Active = false;
+                var product = await _context.Products.FindAsync(command.ProductId);
+                product.Active = false;
 
-                _context.Users.Update(user);
+                _context.Products.Update(product);
                 await _context.SaveChangesAsync();
 
                 return new Unit();

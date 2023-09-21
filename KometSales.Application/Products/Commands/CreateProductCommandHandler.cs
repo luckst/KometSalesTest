@@ -4,11 +4,11 @@ using KometSales.Domain;
 using KometSales.Ifrastructure;
 using MediatR;
 
-namespace KometSales.Application.Users.Commands
+namespace KometSales.Application.Products.Commands
 {
-    public class CreateUserCommandHandler
+    public class CreateProductCommandHandler
     {
-        public class Command : CreateUserModel, IRequest<Unit>
+        public class Command : CreateProductModel, IRequest<Unit>
         {
         }
 
@@ -28,20 +28,11 @@ namespace KometSales.Application.Users.Commands
                 CancellationToken cancellationToken
             )
             {
-                if (string.IsNullOrWhiteSpace(command.UserName) || string.IsNullOrWhiteSpace(command.Password))
-                {
-                    throw new ArgumentNullException("Username and password are required");
-                }
+                var product = _mapper.Map<Product>(command);
+                product.Id = Guid.NewGuid();
+                product.Active = true;
 
-                var userRole = await _context.UserRoles.FindAsync(command.RoleId);
-
-                if (userRole == null) { throw new NullReferenceException("Role not found"); }
-
-                var user = _mapper.Map<User>(command);
-                user.Id = Guid.NewGuid();
-                user.Active = true;
-
-                await _context.Users.AddAsync(user);
+                await _context.Products.AddAsync(product);
                 await _context.SaveChangesAsync();
 
                 return new Unit();

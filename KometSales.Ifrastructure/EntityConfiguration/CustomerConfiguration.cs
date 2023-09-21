@@ -31,6 +31,10 @@ namespace KometSales.Ifrastructure.EntityConfiguration
             builder.Property(c => c.Phone)
                 .IsRequired(false)
                 .HasMaxLength(20);
+
+            builder.Property(c => c.Active)
+                .IsRequired(true)
+                .HasDefaultValue(true);
         }
     }
 }

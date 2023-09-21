@@ -26,6 +26,10 @@ namespace KometSales.Ifrastructure.EntityConfiguration
             builder.Property(c => c.Quantity)
                 .IsRequired(true)
                 .HasDefaultValue(0);
+
+            builder.Property(c => c.Active)
+                .IsRequired(true)
+                .HasDefaultValue(true);
         }
     }
 }
