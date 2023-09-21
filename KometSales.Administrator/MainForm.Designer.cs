@@ -31,6 +31,7 @@
             linkTest = new LinkLabel();
             btnLogOut = new Button();
             lnkUsers = new LinkLabel();
+            lnkProducts = new LinkLabel();
             SuspendLayout();
             // 
             // linkTest
@@ -46,7 +47,7 @@
             // 
             // btnLogOut
             // 
-            btnLogOut.Location = new Point(39, 192);
+            btnLogOut.Location = new Point(39, 122);
             btnLogOut.Name = "btnLogOut";
             btnLogOut.Size = new Size(75, 23);
             btnLogOut.TabIndex = 1;
@@ -65,11 +66,23 @@
             lnkUsers.Text = "Users";
             lnkUsers.LinkClicked += lnkUsers_LinkClicked;
             // 
+            // lnkProducts
+            // 
+            lnkProducts.AutoSize = true;
+            lnkProducts.Location = new Point(39, 75);
+            lnkProducts.Name = "lnkProducts";
+            lnkProducts.Size = new Size(54, 15);
+            lnkProducts.TabIndex = 3;
+            lnkProducts.TabStop = true;
+            lnkProducts.Text = "Products";
+            lnkProducts.LinkClicked += lnkProducts_LinkClicked;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(153, 237);
+            ClientSize = new Size(153, 159);
+            Controls.Add(lnkProducts);
             Controls.Add(lnkUsers);
             Controls.Add(btnLogOut);
             Controls.Add(linkTest);
@@ -89,5 +102,6 @@
         private LinkLabel linkTest;
         private Button btnLogOut;
         private LinkLabel lnkUsers;
+        private LinkLabel lnkProducts;
     }
 }

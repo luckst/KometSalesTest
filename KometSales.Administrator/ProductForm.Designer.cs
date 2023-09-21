@@ -1,6 +1,6 @@
 ﻿namespace KometSales.Administrator
 {
-    partial class UserForm
+    partial class ProductForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,29 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
+            txtDescription = new TextBox();
+            label4 = new Label();
             btnClean = new Button();
             btnDelete = new Button();
-            label6 = new Label();
             dgData = new DataGridView();
             btnBack = new Button();
             btnSave = new Button();
-            txtEmail = new TextBox();
+            txtQuantity = new TextBox();
             label5 = new Label();
-            txtPassword = new TextBox();
             label3 = new Label();
-            txtUserName = new TextBox();
+            txtName = new TextBox();
             label2 = new Label();
-            label1 = new Label();
-            cmbRole = new ComboBox();
+            txtPrice = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgData).BeginInit();
             SuspendLayout();
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(95, 28);
+            label1.TabIndex = 10019;
+            label1.Text = "Products";
+            // 
+            // txtDescription
+            // 
+            txtDescription.Location = new Point(14, 102);
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(451, 49);
+            txtDescription.TabIndex = 4;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(14, 84);
+            label4.Name = "label4";
+            label4.Size = new Size(67, 15);
+            label4.TabIndex = 10030;
+            label4.Text = "Description";
+            // 
             // btnClean
             // 
-            btnClean.Location = new Point(175, 135);
+            btnClean.Location = new Point(177, 157);
             btnClean.Name = "btnClean";
             btnClean.Size = new Size(75, 23);
-            btnClean.TabIndex = 10017;
+            btnClean.TabIndex = 10029;
             btnClean.Text = "Clean";
             btnClean.UseVisualStyleBackColor = true;
             btnClean.Click += btnClean_Click;
@@ -58,22 +85,13 @@
             // btnDelete
             // 
             btnDelete.Enabled = false;
-            btnDelete.Location = new Point(94, 135);
+            btnDelete.Location = new Point(96, 157);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
-            btnDelete.TabIndex = 10016;
+            btnDelete.TabIndex = 10028;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(474, 40);
-            label6.Name = "label6";
-            label6.Size = new Size(30, 15);
-            label6.TabIndex = 10011;
-            label6.Text = "Role";
             // 
             // dgData
             // 
@@ -85,153 +103,133 @@
             dgData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgData.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dgData.Location = new Point(12, 173);
+            dgData.Location = new Point(14, 195);
             dgData.Name = "dgData";
             dgData.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgData.RowTemplate.Height = 25;
             dgData.Size = new Size(634, 150);
-            dgData.TabIndex = 10010;
+            dgData.TabIndex = 10024;
             dgData.CellFormatting += dgData_CellFormatting;
             dgData.SelectionChanged += dgData_SelectionChanged;
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(256, 135);
+            btnBack.Location = new Point(258, 157);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(75, 23);
-            btnBack.TabIndex = 10009;
+            btnBack.TabIndex = 10023;
             btnBack.Text = "Go Back";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(12, 135);
+            btnSave.Location = new Point(14, 157);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
-            btnSave.TabIndex = 10008;
+            btnSave.TabIndex = 10022;
             btnSave.Text = "Create";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // txtEmail
+            // txtQuantity
             // 
-            txtEmail.Location = new Point(287, 58);
-            txtEmail.MaxLength = 255;
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(176, 23);
-            txtEmail.TabIndex = 3;
-            txtEmail.Validating += txtEmail_Validating;
+            txtQuantity.Location = new Point(289, 55);
+            txtQuantity.MaxLength = 255;
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(176, 23);
+            txtQuantity.TabIndex = 3;
+            txtQuantity.KeyPress += txtQuantity_KeyPress;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(287, 40);
+            label5.Location = new Point(289, 37);
             label5.Name = "label5";
-            label5.Size = new Size(36, 15);
-            label5.TabIndex = 10012;
-            label5.Text = "Email";
-            // 
-            // txtPassword
-            // 
-            txtPassword.Location = new Point(150, 58);
-            txtPassword.MaxLength = 255;
-            txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(125, 23);
-            txtPassword.TabIndex = 2;
+            label5.Size = new Size(53, 15);
+            label5.TabIndex = 10025;
+            label5.Text = "Quantity";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(150, 40);
+            label3.Location = new Point(152, 37);
             label3.Name = "label3";
-            label3.Size = new Size(57, 15);
-            label3.TabIndex = 10014;
-            label3.Text = "Password";
+            label3.Size = new Size(33, 15);
+            label3.TabIndex = 10026;
+            label3.Text = "Price";
             // 
-            // txtUserName
+            // txtName
             // 
-            txtUserName.Location = new Point(12, 58);
-            txtUserName.MaxLength = 255;
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(125, 23);
-            txtUserName.TabIndex = 1;
+            txtName.Location = new Point(14, 55);
+            txtName.MaxLength = 255;
+            txtName.Name = "txtName";
+            txtName.Size = new Size(125, 23);
+            txtName.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 40);
+            label2.Location = new Point(14, 37);
             label2.Name = "label2";
-            label2.Size = new Size(65, 15);
-            label2.TabIndex = 10015;
-            label2.Text = "User Name";
+            label2.Size = new Size(39, 15);
+            label2.TabIndex = 10027;
+            label2.Text = "Name";
             // 
-            // label1
+            // txtPrice
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(5, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(63, 28);
-            label1.TabIndex = 10002;
-            label1.Text = "Users";
+            txtPrice.Location = new Point(152, 55);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(117, 23);
+            txtPrice.TabIndex = 2;
+            txtPrice.KeyPress += txtPrice_KeyPress;
             // 
-            // cmbRole
-            // 
-            cmbRole.FormattingEnabled = true;
-            cmbRole.Location = new Point(474, 58);
-            cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(145, 23);
-            cmbRole.TabIndex = 4;
-            // 
-            // UserForm
+            // ProductForm
             // 
             AcceptButton = btnSave;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(666, 360);
-            Controls.Add(cmbRole);
+            ClientSize = new Size(657, 351);
+            Controls.Add(txtPrice);
+            Controls.Add(txtDescription);
+            Controls.Add(label4);
             Controls.Add(btnClean);
             Controls.Add(btnDelete);
-            Controls.Add(label6);
             Controls.Add(dgData);
             Controls.Add(btnBack);
             Controls.Add(btnSave);
-            Controls.Add(txtEmail);
+            Controls.Add(txtQuantity);
             Controls.Add(label5);
-            Controls.Add(txtPassword);
             Controls.Add(label3);
-            Controls.Add(txtUserName);
+            Controls.Add(txtName);
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "UserForm";
+            Name = "ProductForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Users";
-            Load += UserForm_Load;
+            Text = "Products";
+            Load += ProductForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgData).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
+        private Label label1;
+        private TextBox txtDescription;
+        private Label label4;
         private Button btnClean;
         private Button btnDelete;
-        private Label label6;
         private DataGridView dgData;
         private Button btnBack;
         private Button btnSave;
-        private TextBox txtEmail;
+        private TextBox txtQuantity;
         private Label label5;
-        private TextBox txtPassword;
         private Label label3;
-        private TextBox txtUserName;
+        private TextBox txtName;
         private Label label2;
-        private Label label1;
-        private ComboBox cmbRole;
+        private TextBox txtPrice;
     }
 }

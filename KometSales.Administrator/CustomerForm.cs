@@ -98,21 +98,21 @@ namespace KometSales.Administrator
 
         private void Create()
         {
-            var customerModel = new CustomerModel
-            {
-                Address = txtAddress.Text,
-                Email = txtEmail.Text,
-                FirstName = txtFirstName.Text,
-                LastName = txtLastName.Text,
-                Phone = txtPhone.Text
-            };
+            CustomerModel customerModel = GetModel();
 
             HttpUtil.Send<CustomerModel, object>(AppContext.AuthToken, $"{Constants.ApiBaseUrl}customers", HttpMethod.Post, body: customerModel);
         }
 
         private void Update()
         {
-            var customerModel = new CustomerModel
+            CustomerModel customerModel = GetModel();
+
+            HttpUtil.Send<CustomerModel, object>(AppContext.AuthToken, $"{Constants.ApiBaseUrl}customers/{customerId}", HttpMethod.Put, body: customerModel);
+        }
+
+        private CustomerModel GetModel()
+        {
+            return new CustomerModel
             {
                 Address = txtAddress.Text,
                 Email = txtEmail.Text,
@@ -120,8 +120,6 @@ namespace KometSales.Administrator
                 LastName = txtLastName.Text,
                 Phone = txtPhone.Text
             };
-
-            HttpUtil.Send<CustomerModel, object>(AppContext.AuthToken, $"{Constants.ApiBaseUrl}customers/{customerId}", HttpMethod.Put, body: customerModel);
         }
 
         private bool IsValidPhoneNumber(string phoneNumber)

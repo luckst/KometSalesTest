@@ -46,5 +46,18 @@
             UserForm userForm = new UserForm();
             userForm.Show();
         }
+
+        private void lnkProducts_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!TokenValidatorService.IsAdmin)
+            {
+                MessageBox.Show("Only administrators can use this option");
+                return;
+            }
+
+            this.Close();
+            ProductForm productForm = new ProductForm();
+            productForm.Show();
+        }
     }
 }
