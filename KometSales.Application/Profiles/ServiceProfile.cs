@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using KometSales.Application.Products.Commands;
+using KometSales.Application.Sales.Commands;
 using KometSales.Application.Users.Commands;
 using KometSales.Common.Entities.Dtos;
 using KometSales.Common.Entities.Models;
@@ -32,6 +33,12 @@ namespace KometSales.Application.Profiles
             CreateMap<CustomerModel, Customer>();
             CreateMap<CustomerModel, UpdateProductCommandHandler.Command>();
             CreateMap<CustomerModel, CreateProductCommandHandler.Command>();
+            #endregion
+
+            #region Sales
+            CreateMap<SaleDetailModel, SaleDetail>();
+            CreateMap<SaleDetail, CreateSaleCommandHandler.Command>();
+            CreateMap<CreateSaleCommandHandler.Command, Sale>();
             #endregion
         }
     }
