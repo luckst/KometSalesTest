@@ -1,5 +1,6 @@
 ﻿using KometSales.Api.Services;
 using KometSales.Application.Users.Commands;
+using KometSales.Common.Entities.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,19 +20,19 @@ namespace KometSales.Api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(string username, string password)
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var command = new ValidateUserCommandHandler.Command()
             {
-                Password = password,
-                UserName = username
+                Password = model.Password,
+                UserName = model.UserName
             };
 
             var (validUser, userRol) = await _mediator.Send(command);
 
             if (validUser)
             {
-                var token = _tokenGenerator.GenerateToken(username, userRol);
+                var token = _tokenGenerator.GenerateToken(model.UserName, userRol);
                 return Ok(new { Token = token });
             }
 
