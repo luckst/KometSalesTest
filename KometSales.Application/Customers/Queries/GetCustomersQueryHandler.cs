@@ -2,17 +2,17 @@
 using KometSales.Common.Entities.Dtos;
 using KometSales.Ifrastructure;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
-namespace KometSales.Application.Products.Queries
+namespace KometSales.Application.Customers.Queries
 {
-    public class GetProductQueryHandler
+    public class GetCustomersQueryHandler
     {
-        public class Query : IRequest<ProductDto>
+        public class Query : IRequest<List<CustomerDto>>
         {
-            public Guid ProductId { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, ProductDto>
+        public class Handler : IRequestHandler<Query, List<CustomerDto>>
         {
             private readonly ServiceDbContext _context;
             private readonly IMapper _mapper;
@@ -23,12 +23,12 @@ namespace KometSales.Application.Products.Queries
                 _mapper = mapper;
             }
 
-            public async Task<ProductDto> Handle(
+            public async Task<List<CustomerDto>> Handle(
                 Query query,
                 CancellationToken cancellationToken
             )
             {
-                return _mapper.Map<ProductDto>(await _context.Products.FindAsync(query.ProductId));
+                return _mapper.Map<List<CustomerDto>>(await _context.Customers.ToListAsync());
             }
         }
     }

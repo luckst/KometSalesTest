@@ -3,16 +3,16 @@ using KometSales.Common.Entities.Dtos;
 using KometSales.Ifrastructure;
 using MediatR;
 
-namespace KometSales.Application.Products.Queries
+namespace KometSales.Application.Customers.Queries
 {
-    public class GetProductQueryHandler
+    public class GetCustomerQueryHandler
     {
-        public class Query : IRequest<ProductDto>
+        public class Query : IRequest<CustomerDto>
         {
-            public Guid ProductId { get; set; }
+            public Guid CustomerId { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, ProductDto>
+        public class Handler : IRequestHandler<Query, CustomerDto>
         {
             private readonly ServiceDbContext _context;
             private readonly IMapper _mapper;
@@ -23,12 +23,12 @@ namespace KometSales.Application.Products.Queries
                 _mapper = mapper;
             }
 
-            public async Task<ProductDto> Handle(
+            public async Task<CustomerDto> Handle(
                 Query query,
                 CancellationToken cancellationToken
             )
             {
-                return _mapper.Map<ProductDto>(await _context.Products.FindAsync(query.ProductId));
+                return _mapper.Map<CustomerDto>(await _context.Customers.FindAsync(query.CustomerId));
             }
         }
     }

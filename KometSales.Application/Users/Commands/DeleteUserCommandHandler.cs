@@ -25,6 +25,11 @@ namespace KometSales.Application.Users.Commands
             )
             {
                 var user = await _context.Users.FindAsync(command.UserId);
+                if (user == null)
+                {
+                    throw new NullReferenceException("User not found");
+                }
+
                 user.Active = false;
 
                 _context.Users.Update(user);

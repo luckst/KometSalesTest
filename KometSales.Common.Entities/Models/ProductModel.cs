@@ -2,7 +2,7 @@
 
 namespace KometSales.Common.Entities.Models
 {
-    public class UpdateProductModel
+    public class ProductModel
     {
         [Required]
         [MaxLength(255)]

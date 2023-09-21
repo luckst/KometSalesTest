@@ -1,13 +1,14 @@
-﻿using KometSales.Ifrastructure;
+﻿using KometSales.Domain;
+using KometSales.Ifrastructure;
 using MediatR;
 
-namespace KometSales.Application.Products.Commands
+namespace KometSales.Application.Customers.Commands
 {
-    public class DeleteProductCommandHandler
+    public class DeleteCustomerCommandHandler
     {
         public class Command : IRequest<Unit>
         {
-            public Guid ProductId { get; set; }
+            public Guid CustomerId { get; set; }
         }
 
         public class Handler : IRequestHandler<Command, Unit>
@@ -24,16 +25,16 @@ namespace KometSales.Application.Products.Commands
                 CancellationToken cancellationToken
             )
             {
-                var product = await _context.Products.FindAsync(command.ProductId);
+                var customer = await _context.Customers.FindAsync(command.CustomerId);
 
-                if (product == null)
+                if (customer == null)
                 {
-                    throw new NullReferenceException("Product not found");
+                    throw new NullReferenceException("Customer not found");
                 }
 
-                product.Active = false;
+                customer.Active = false;
 
-                _context.Products.Update(product);
+                _context.Customers.Update(customer);
                 await _context.SaveChangesAsync();
 
                 return new Unit();

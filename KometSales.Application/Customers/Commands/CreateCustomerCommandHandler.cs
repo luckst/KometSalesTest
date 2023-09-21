@@ -4,11 +4,11 @@ using KometSales.Domain;
 using KometSales.Ifrastructure;
 using MediatR;
 
-namespace KometSales.Application.Products.Commands
+namespace KometSales.Application.Customers.Commands
 {
-    public class CreateProductCommandHandler
+    public class CreateCustomerCommandHandler
     {
-        public class Command : ProductModel, IRequest<Unit>
+        public class Command : CustomerModel, IRequest<Unit>
         {
         }
 
@@ -28,11 +28,11 @@ namespace KometSales.Application.Products.Commands
                 CancellationToken cancellationToken
             )
             {
-                var product = _mapper.Map<Product>(command);
-                product.Id = Guid.NewGuid();
-                product.Active = true;
+                var customer = _mapper.Map<Customer>(command);
+                customer.Id = Guid.NewGuid();
+                customer.Active = true;
 
-                await _context.Products.AddAsync(product);
+                await _context.Customers.AddAsync(customer);
                 await _context.SaveChangesAsync();
 
                 return new Unit();

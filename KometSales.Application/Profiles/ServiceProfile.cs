@@ -22,9 +22,16 @@ namespace KometSales.Application.Profiles
 
             #region Products
             CreateMap<Product, ProductDto>();
-            CreateMap<CreateProductModel, Product>();
-            CreateMap<UpdateProductModel, UpdateProductCommandHandler.Command>();
-            CreateMap<CreateProductModel, CreateProductCommandHandler.Command>();
+            CreateMap<ProductModel, Product>();
+            CreateMap<ProductModel, UpdateProductCommandHandler.Command>();
+            CreateMap<ProductModel, CreateProductCommandHandler.Command>();
+            #endregion
+
+            #region Customers
+            CreateMap<Customer, CustomerDto>();
+            CreateMap<CustomerModel, Customer>();
+            CreateMap<CustomerModel, UpdateProductCommandHandler.Command>();
+            CreateMap<CustomerModel, CreateProductCommandHandler.Command>();
             #endregion
         }
     }

@@ -6,7 +6,7 @@ namespace KometSales.Application.Products.Commands
 {
     public class UpdateProductCommandHandler
     {
-        public class Command : UpdateProductModel, IRequest<Unit>
+        public class Command : ProductModel, IRequest<Unit>
         {
             public Guid ProductId { get; set; }
         }
