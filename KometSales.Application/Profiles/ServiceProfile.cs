@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KometSales.Application.Customers.Commands;
 using KometSales.Application.Products.Commands;
 using KometSales.Application.Sales.Commands;
 using KometSales.Application.Users.Commands;
@@ -31,8 +32,8 @@ namespace KometSales.Application.Profiles
             #region Customers
             CreateMap<Customer, CustomerDto>();
             CreateMap<CustomerModel, Customer>();
-            CreateMap<CustomerModel, UpdateProductCommandHandler.Command>();
-            CreateMap<CustomerModel, CreateProductCommandHandler.Command>();
+            CreateMap<CustomerModel, UpdateCustomerCommandHandler.Command>();
+            CreateMap<CustomerModel, CreateCustomerCommandHandler.Command>();
             #endregion
 
             #region Sales

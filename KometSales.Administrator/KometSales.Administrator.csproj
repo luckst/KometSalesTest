@@ -10,10 +10,12 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.24.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\KometSales.Common.Entities\KometSales.Common.Entities.csproj" />
+    <ProjectReference Include="..\KometSales.Common\KometSales.Common.csproj" />
   </ItemGroup>
 
 </Project>

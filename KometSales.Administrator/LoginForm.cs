@@ -1,5 +1,9 @@
-﻿using KometSales.Common.Entities.Models;
+﻿using KometSales.Common.Entities.Dtos;
+using KometSales.Common.Entities.Models;
+using KometSales.Common.Exceptions;
+using KometSales.Common.Utils;
 using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -33,6 +37,10 @@ namespace KometSales.Administrator
                     MessageBox.Show("Invalid credentials. Try again");
                 }
             }
+            catch (AppException)
+            {
+                MessageBox.Show("Invalid credentials. Try again");
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Auth error: " + ex.Message);
@@ -41,32 +49,15 @@ namespace KometSales.Administrator
 
         private async Task<string> Authenticate(string username, string password)
         {
-            using (var client = new HttpClient())
+            var requestBody = new LoginModel
             {
-                client.BaseAddress = new Uri(Constants.ApiBaseUrl);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                UserName = username,
+                Password = password
+            };
 
-                var requestBody = new LoginModel
-                {
-                    UserName = username,
-                    Password = password
-                };
+            var tokenResponse = await HttpUtil.SendAsync<LoginModel, TokenDto>(AppContext.AuthToken, $"{Constants.ApiBaseUrl}auth/login", HttpMethod.Post, body: requestBody);
 
-                string jsonRequestBody = JsonConvert.SerializeObject(requestBody);
-
-                var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await client.PostAsync("auth/login", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var token = await response.Content.ReadAsStringAsync();
-                    return token;
-                }
-
-                return null;
-            }
+            return tokenResponse.Token;
         }
     }
 }

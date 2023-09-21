@@ -28,7 +28,7 @@ namespace KometSales.Application.Products.Queries
                 CancellationToken cancellationToken
             )
             {
-                return _mapper.Map<List<ProductDto>>(await _context.Products.ToListAsync());
+                return _mapper.Map<List<ProductDto>>(await _context.Products.Where(c => c.Active).ToListAsync());
             }
         }
     }

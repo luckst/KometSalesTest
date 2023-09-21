@@ -26,7 +26,7 @@ namespace KometSales.Api.Services
                 new Claim(ClaimTypes.Name, username),
                 new Claim(ClaimTypes.Role, roleName)
             }),
-                Expires = DateTime.UtcNow.AddHours(1),
+                Expires = DateTime.UtcNow.AddMinutes(10),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

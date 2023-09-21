@@ -1,20 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace KometSales.Administrator
+﻿namespace KometSales.Administrator
 {
     public partial class MainForm : Form
     {
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            TokenValidatorService.Logout(this);
+        }
+
+        private void linkTest_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+            CustomerForm customerForm = new CustomerForm();
+            customerForm.Show();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            if (TokenValidatorService.TokenHasExpired())
+            {
+                MessageBox.Show("Your session has expired. Please log in again.");
+                TokenValidatorService.Logout(this);
+            }
         }
     }
 }

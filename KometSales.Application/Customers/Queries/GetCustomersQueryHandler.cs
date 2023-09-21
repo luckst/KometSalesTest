@@ -28,7 +28,7 @@ namespace KometSales.Application.Customers.Queries
                 CancellationToken cancellationToken
             )
             {
-                return _mapper.Map<List<CustomerDto>>(await _context.Customers.ToListAsync());
+                return _mapper.Map<List<CustomerDto>>(await _context.Customers.Where(c => c.Active).ToListAsync());
             }
         }
     }

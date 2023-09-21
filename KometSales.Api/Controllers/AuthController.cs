@@ -1,5 +1,6 @@
 ﻿using KometSales.Api.Services;
 using KometSales.Application.Users.Commands;
+using KometSales.Common.Entities.Dtos;
 using KometSales.Common.Entities.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +34,7 @@ namespace KometSales.Api.Controllers
             if (validUser)
             {
                 var token = _tokenGenerator.GenerateToken(model.UserName, userRol);
-                return Ok(new { Token = token });
+                return Ok(new TokenDto{ Token = token });
             }
 
             return Unauthorized();

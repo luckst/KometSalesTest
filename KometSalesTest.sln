@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KometSales.Web", "KometSale
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KometSales.Administrator", "KometSales.Administrator\KometSales.Administrator.csproj", "{EB93C95B-60F0-4B54-B51F-E386F1B9BD30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KometSales.Common", "KometSales.Common\KometSales.Common.csproj", "{86133E5B-084B-45EA-8031-A7533F217D5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{EB93C95B-60F0-4B54-B51F-E386F1B9BD30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB93C95B-60F0-4B54-B51F-E386F1B9BD30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB93C95B-60F0-4B54-B51F-E386F1B9BD30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86133E5B-084B-45EA-8031-A7533F217D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86133E5B-084B-45EA-8031-A7533F217D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86133E5B-084B-45EA-8031-A7533F217D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86133E5B-084B-45EA-8031-A7533F217D5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{3CDE8076-D53B-46C6-86B8-A9087EF8006F} = {8041073F-4F57-4706-B7A2-2C5E36411EB1}
 		{85FC8280-48CD-4E38-BB1E-9D32DCF00664} = {A06F109B-3F16-492C-9093-84982044943E}
 		{EB93C95B-60F0-4B54-B51F-E386F1B9BD30} = {A06F109B-3F16-492C-9093-84982044943E}
+		{86133E5B-084B-45EA-8031-A7533F217D5F} = {350F4441-B52E-48B8-9ABD-B4D7BD3EC109}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16FDB62D-5D1D-402E-8E2E-D06D47008C6C}

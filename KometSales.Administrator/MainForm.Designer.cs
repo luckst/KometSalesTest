@@ -29,26 +29,44 @@
         private void InitializeComponent()
         {
             linkTest = new LinkLabel();
+            btnLogOut = new Button();
             SuspendLayout();
             // 
             // linkTest
             // 
             linkTest.AutoSize = true;
-            linkTest.Location = new Point(66, 27);
+            linkTest.Location = new Point(39, 9);
             linkTest.Name = "linkTest";
-            linkTest.Size = new Size(60, 15);
+            linkTest.Size = new Size(64, 15);
             linkTest.TabIndex = 0;
             linkTest.TabStop = true;
-            linkTest.Text = "linkLabel1";
+            linkTest.Text = "Customers";
+            linkTest.LinkClicked += linkTest_LinkClicked;
+            // 
+            // btnLogOut
+            // 
+            btnLogOut.Location = new Point(39, 192);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(75, 23);
+            btnLogOut.TabIndex = 1;
+            btnLogOut.Text = "Log out";
+            btnLogOut.UseVisualStyleBackColor = true;
+            btnLogOut.Click += btnLogOut_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(153, 237);
+            Controls.Add(btnLogOut);
             Controls.Add(linkTest);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "MainForm";
-            Text = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Main";
+            Load += MainForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -56,5 +74,6 @@
         #endregion
 
         private LinkLabel linkTest;
+        private Button btnLogOut;
     }
 }
