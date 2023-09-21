@@ -1,11 +1,21 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using KometSales.Common.Entities.Enums;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace KometSales.Administrator
 {
-    public static class TokenValidatorService
+    public class TokenValidatorService
     {
+        private static bool isAdmin;
+
+        public static bool IsAdmin
+        {
+            get { return isAdmin; }
+            private set { isAdmin = value; }
+        }
+
         public static bool TokenHasExpired()
         {
             DateTime tokenExpiration = GetTokenExpiration();
@@ -33,6 +43,9 @@ namespace KometSales.Administrator
                 if (principal != null)
                 {
                     var expirationClaim = principal.FindFirst("exp");
+                    var roleClaim = principal.FindFirst(ClaimTypes.Role);
+
+                    isAdmin = roleClaim != null && roleClaim.Value == RoleEnum.Administrator.ToString();
 
                     if (expirationClaim != null && long.TryParse(expirationClaim.Value, out long unixTimestamp))
                     {

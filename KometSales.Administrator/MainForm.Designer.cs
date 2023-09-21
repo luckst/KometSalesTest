@@ -30,6 +30,7 @@
         {
             linkTest = new LinkLabel();
             btnLogOut = new Button();
+            lnkUsers = new LinkLabel();
             SuspendLayout();
             // 
             // linkTest
@@ -53,11 +54,23 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
+            // lnkUsers
+            // 
+            lnkUsers.AutoSize = true;
+            lnkUsers.Location = new Point(39, 40);
+            lnkUsers.Name = "lnkUsers";
+            lnkUsers.Size = new Size(35, 15);
+            lnkUsers.TabIndex = 2;
+            lnkUsers.TabStop = true;
+            lnkUsers.Text = "Users";
+            lnkUsers.LinkClicked += lnkUsers_LinkClicked;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(153, 237);
+            Controls.Add(lnkUsers);
             Controls.Add(btnLogOut);
             Controls.Add(linkTest);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -75,5 +88,6 @@
 
         private LinkLabel linkTest;
         private Button btnLogOut;
+        private LinkLabel lnkUsers;
     }
 }

@@ -167,6 +167,8 @@ namespace KometSales.Administrator
             txtAddress.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Text = "Create";
+
+            editMode = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -180,6 +182,7 @@ namespace KometSales.Administrator
                     HttpUtil.Send<object, object>(AppContext.AuthToken, $"{Constants.ApiBaseUrl}customers/{customerId}", HttpMethod.Delete);
 
                     CleanForm();
+                    LoadCustomers();
                 }
             }
             catch (Exception ex)
