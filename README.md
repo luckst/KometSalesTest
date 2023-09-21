@@ -46,3 +46,5 @@ To run this project, you'll need the following software:
 ## User CRUD
 ![image](https://github.com/luckst/KometSalesTest/assets/7145408/30fd5ac7-acb9-4f5e-8011-8b467ccc941b)
 
+## Clients applications added and cruds finished
+![image](https://github.com/luckst/KometSalesTest/assets/7145408/9345c489-4405-4d1b-ae8f-b53b4b170dcc)
