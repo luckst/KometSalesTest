@@ -2,7 +2,7 @@
 
 <!-- HTML for product and customer search -->
 <div class="search-container">
-    <h2>Search Customers and Products</h2>
+    <h2>Sales system</h2>
     <form id="search-form">
         <!-- Customer search -->
         <div class="form-group">
@@ -160,7 +160,8 @@
                     contentType: 'application/json',
                     success: function () {
                         alert('Sale created successfully.');
-                        window.location.href = '@Url.Page("Index", "Home")';
+
+                        window.location.href = '/Home/Index';
                     },
                     error: function (error) {
                         if (error.responseText) {
