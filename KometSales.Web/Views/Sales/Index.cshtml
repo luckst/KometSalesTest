@@ -1,0 +1,177 @@
+﻿@model SalesViewModel
+
+<!-- HTML for product and customer search -->
+<div class="search-container">
+    <h2>Search Customers and Products</h2>
+    <form id="search-form">
+        <!-- Customer search -->
+        <div class="form-group">
+            <h2>Search Customer</h2>
+            <input type="hidden" id="CustomerId" name="CustomerId" />
+            <select class="form-control" id="customerDropdown">
+                <option value="">Select a customer...</option>
+            </select>
+        </div>
+        <!-- Product search -->
+        <div class="search-container">
+            <h2>Search Products</h2>
+            <select class="form-control" id="productDropdown">
+                <option value="">Select a product...</option>
+            </select>
+        </div>
+
+        <div class="col-md-12" id="selectedProductDetails">
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-12" id="quantityContainer">
+            <input class="form-control" type="number" id="quantityInput" min="1" value="1">
+            <button class="btn btn-primary" id="addToCartButton">Add to Cart</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 table-responsive" id="cartContainer">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-success" id="submitSaleButton">Process sale</button>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#customerDropdown').select2({
+                placeholder: 'Select a customer...',
+                minimumInputLength: 3,
+                ajax: {
+                    url: '/Sales/SearchCustomers',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        var customers = data.map(function (customer) {
+                            return {
+                                id: customer.id,
+                                text: `${customer.firstName} ${customer.lastName}`
+                            };
+                        });
+
+                        return {
+                            results: customers
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            $('#customerDropdown').on('select2:select', function (e) {
+                var selectedCustomer = e.params.data;
+                $('#CustomerId').val(selectedCustomer.id);
+            });
+
+            $('#productDropdown').select2({
+                placeholder: 'Select a product...',
+                minimumInputLength: 3,
+                ajax: {
+                    url: '/Sales/SearchProducts',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        var products = data.map(function (product) {
+                            return {
+                                id: product.id,
+                                text: product.productName
+                            };
+                        });
+
+                        return {
+                            results: products
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            $('#productDropdown').on('select2:select', function (e) {
+                var selectedProduct = e.params.data;
+
+                $.ajax({
+                    url: '/Sales/GetProductDetails',
+                    type: 'GET',
+                    data: { productId: selectedProduct.id },
+                    success: function (productDetails) {
+                        $('#selectedProductDetails').html(`
+                                            <h3>${selectedProduct.text}</h3>
+                                            <p>Price: $${productDetails.price.toFixed(2)}</p>
+                                            <p>Available stock: ${productDetails.quantity.toFixed(0)}</p>
+                                        `);
+
+                        $('#quantityContainer').show();
+
+                        $('#addToCartButton').off('click').on('click', function (e) {
+                            e.preventDefault();
+                            console.log('Add to Cart button clicked');
+                            var quantity = parseInt($('#quantityInput').val(), 10);
+                            if (!isNaN(quantity) && quantity > 0) {
+                                $.ajax({
+                                    url: '/Sales/AddToCart',
+                                    type: 'POST',
+                                    data: { productId: selectedProduct.id, quantity: quantity },
+                                    success: function () {
+                                        $('#cartContainer').load('/Sales/Cart');
+                                    },
+                                    error: function (error) {
+                                        if (error.responseText) {
+                                            alert('Error: ' + error.responseText);
+                                        } else {
+                                            alert('An error occurred.');
+                                        }
+                                        console.error('Error:', error);
+                                    }
+                                });
+                            } else {
+                                alert('Please enter a valid quantity.');
+                            }
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+
+            $('#submitSaleButton').click(function () {
+                if (!$('#CustomerId').val())
+                {
+                    alert("Customer is required");
+                    return;
+                }
+
+                var saleModel = {
+                    CustomerId: $('#CustomerId').val()
+                };
+
+                $.ajax({
+                    url: '/Sales/CreateSale',
+                    type: 'POST',
+                    data: JSON.stringify(saleModel),
+                    contentType: 'application/json',
+                    success: function () {
+                        alert('Sale created successfully.');
+                        window.location.href = '@Url.Page("Index", "Home")';
+                    },
+                    error: function (error) {
+                        if (error.responseText) {
+                            alert('Error: ' + error.responseText);
+                        } else {
+                            alert('An error occurred.');
+                        }
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+}

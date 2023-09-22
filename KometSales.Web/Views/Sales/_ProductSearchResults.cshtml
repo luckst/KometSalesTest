@@ -1,0 +1,10 @@
+﻿@using KometSales.Common.Entities.Dtos;
+@model List<ProductDto>
+
+<ul>
+    @foreach (var product in Model)
+    {
+        <li>@product.ProductName</li>
+        <!-- Add an "Add to Cart" button here as shown in a previous response -->
+    }
+</ul>

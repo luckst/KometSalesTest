@@ -14,7 +14,6 @@ namespace KometSales.Api.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Administrator")]
     public class CustomersController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -31,6 +30,7 @@ namespace KometSales.Api.Controllers
         /// </summary>
         /// <returns>List of customers</returns>
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(typeof(List<CustomerDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -53,7 +53,7 @@ namespace KometSales.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<List<CustomerDto>> Search(string? filter)
         {
-            return await _mediator.Send(new SearchCustomersQueryHandler.Query() { Filter = filter});
+            return await _mediator.Send(new SearchCustomersQueryHandler.Query() { Filter = filter });
         }
 
         /// <summary>
@@ -62,6 +62,7 @@ namespace KometSales.Api.Controllers
         /// <param name="model">Create customer model</param>
         /// <returns>Unit</returns>
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -78,6 +79,7 @@ namespace KometSales.Api.Controllers
         /// <param name="model">Update customer model</param>
         /// <returns>Unit</returns>
         [HttpPut("{customerId}")]
+        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -95,6 +97,7 @@ namespace KometSales.Api.Controllers
         /// <param name="customerId">customer identifier</param>
         /// <returns>Unit</returns>
         [HttpDelete("{customerId}")]
+        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

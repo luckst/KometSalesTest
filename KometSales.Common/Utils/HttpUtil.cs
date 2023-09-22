@@ -71,10 +71,6 @@ namespace KometSales.Common.Utils
             {
                 throw new Exception("An error occurred while deserializing the response: " + ex.Message, ex);
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
         }
 
         public static TOutput? Send<TInput, TOutput>(string authToken, string url, HttpMethod httpMethod, Dictionary<string, string> queryString = null, TInput? body = default(TInput))

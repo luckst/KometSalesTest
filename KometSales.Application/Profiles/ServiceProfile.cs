@@ -38,7 +38,7 @@ namespace KometSales.Application.Profiles
 
             #region Sales
             CreateMap<SaleDetailModel, SaleDetail>();
-            CreateMap<SaleDetail, CreateSaleCommandHandler.Command>();
+            CreateMap<SaleModel, CreateSaleCommandHandler.Command>();
             CreateMap<CreateSaleCommandHandler.Command, Sale>();
             #endregion
         }

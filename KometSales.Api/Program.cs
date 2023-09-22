@@ -80,7 +80,7 @@ builder.Services.AddSingleton(settings =>
     return commonGlobalAppSingleSettings;
 });
 
-var key = Encoding.ASCII.GetBytes(secretKey); 
+var key = Encoding.ASCII.GetBytes(secretKey);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
