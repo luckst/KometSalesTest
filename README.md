@@ -29,7 +29,8 @@ These instructions will get you a copy of the project up and running on your loc
 To run this project, you'll need the following software:
 
 - NET SDK 7
-- Run SQL File `DB_Creation.sql`
+- Run SQL File `DB_Creation.sql` in this same repository https://github.com/luckst/KometSalesTest/blob/main/DB_Creation.sql
+- Make sure that the solution is configure to run multiple projects and you select: Api, Web and Administrator
 
 ### Installing
 
